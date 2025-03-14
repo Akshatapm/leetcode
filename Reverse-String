@@ -9,7 +9,7 @@ class Solution {
             s[left] = s[right];
             s[right] = temp;
 
-            left++;
+            left+=1;;
             right--;
         }
     }
