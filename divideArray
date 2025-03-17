@@ -1,0 +1,27 @@
+import java.util.HashMap;
+
+public class Solution {
+    public boolean divideArray(int[] nums) {
+        HashMap<Integer, Integer> countMap = new HashMap<>();
+
+        // Count the frequency of each element
+        for (int num : nums) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Check if all elements have an even count
+        for (int count : countMap.values()) {
+            if (count % 2 != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] nums = {3, 2, 3, 2, 2, 2};
+        System.out.println(solution.divideArray(nums)); // Output: true
+    }
+}
