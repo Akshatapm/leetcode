@@ -1,0 +1,35 @@
+import java.util.Stack;
+
+public class Solution {
+    public String clearDigits(String s) {
+        Stack<Character> st = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                if (!st.isEmpty()) {
+                    st.pop(); // Remove the left character
+                }
+            } else {
+                st.push(c); // Push only non-digit characters
+            }
+        }
+
+        // Constructing the final result from stack
+        StringBuilder result = new StringBuilder();
+        for (char ch : st) {
+            result.append(ch);
+        }
+
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        System.out.println(sol.clearDigits("ab44")); // Output: ""
+        System.out.println(sol.clearDigits("bz1"));  // Output: "bz"
+        System.out.println(sol.clearDigits("a1b2c3")); // Output: ""
+        System.out.println(sol.clearDigits("abc123def")); // Output: "def"
+        System.out.println(sol.clearDigits("xyz9")); // Output: "xy"
+    }
+}
