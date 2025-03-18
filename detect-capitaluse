@@ -1,0 +1,28 @@
+public class CorrectCapitalization {
+    public static boolean isCapitalizationCorrect(String word) {
+        // All uppercase
+        if (word.equals(word.toUpperCase())) {
+            return true;
+        }
+
+        // All lowercase
+        if (word.equals(word.toLowerCase())) {
+            return true;
+        }
+
+        // First letter capital, rest lowercase
+        if (Character.isUpperCase(word.charAt(0)) &&
+            word.substring(1).equals(word.substring(1).toLowerCase())) {
+            return true;
+        }
+
+        return false; // Any other case
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isCapitalizationCorrect("HELLO"));   // true
+        System.out.println(isCapitalizationCorrect("hello"));   // true
+        System.out.println(isCapitalizationCorrect("Hello"));   // true
+        System.out.println(isCapitalizationCorrect("HeLLo"));   // false
+    }
+}
