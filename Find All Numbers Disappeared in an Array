@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> li = new ArrayList<>();
+        HashSet<Integer> set = new HashSet<>();
+
+        // Store all numbers in HashSet
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        // Check for missing numbers in the range 1 to nums.length
+        for (int i = 1; i <= nums.length; i++) {
+            if (!set.contains(i)) {
+               li.add(i);
+            }
+        }
+
+        return li;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};  // Example array
+        System.out.println("Missing numbers: " + sol.findDisappearedNumbers(nums));
+    }
+}
