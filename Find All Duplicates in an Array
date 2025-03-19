@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        List<Integer> duplicates = new ArrayList<>();
+
+        for (int num : nums) {
+            if (!set.add(num)) {  // If already present in set, it's a duplicate
+                duplicates.add(num);
+            }
+        }
+        return duplicates;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};  // Example input
+        System.out.println("Duplicate numbers: " + sol.findDuplicates(nums));
+    }
+}
