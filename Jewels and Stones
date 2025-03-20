@@ -1,0 +1,43 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+class Solution {
+    public int numJewelsInStones(String jewels, String stones) {
+        HashSet<Character> set = new HashSet<>();
+        int count = 0;
+
+        // Add all jewel characters to the HashSet
+        for (char c : jewels.toCharArray()) {
+            set.add(c);
+        }
+
+        // Check each stone, if it's in the HashSet, increase the count
+        for (char c : stones.toCharArray()) {
+            if (set.contains(c)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Take user input
+        System.out.print("Enter jewels string: ");
+        String jewels = scanner.nextLine();
+
+        System.out.print("Enter stones string: ");
+        String stones = scanner.nextLine();
+
+        // Create an object of Solution to call the method
+        Solution solution = new Solution();
+        int result = solution.numJewelsInStones(jewels, stones);
+
+        // Print the result
+        System.out.println("Number of jewels in stones: " + result);
+
+        scanner.close(); // Close scanner to avoid resource leak
+    }
+}
