@@ -1,0 +1,38 @@
+import java.util.*;
+
+class Solution {
+    public int rearrangeCharacters(String s, String target) {
+        int[] sFreq = new int[26]; // Frequency of characters in s
+        int[] targetFreq = new int[26]; // Frequency of characters in target
+
+        // Count character frequencies in s
+        for (char c : s.toCharArray()) {
+            sFreq[c - 'a']++;
+        }
+
+        // Count character frequencies in target
+        for (char c : target.toCharArray()) {
+            targetFreq[c - 'a']++;
+        }
+
+        // Calculate max possible times we can form target
+        int minCount = Integer.MAX_VALUE;
+        for (char c : target.toCharArray()) {
+            if (targetFreq[c - 'a'] > 0) { // Only check characters in target
+                minCount = Math.min(minCount, sFreq[c - 'a'] / targetFreq[c - 'a']);
+            }
+        }
+
+        return minCount;
+    }
+
+    // Main function to test the code
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        
+        // Example test cases
+        System.out.println(solution.rearrangeCharacters("ilovecodingonleetcode", "code")); // Output: 2
+        System.out.println(solution.rearrangeCharacters("abcba", "abc")); // Output: 1
+        System.out.println(solution.rearrangeCharacters("abbaccaddaee", "abc")); // Output: 2
+    }
+}
