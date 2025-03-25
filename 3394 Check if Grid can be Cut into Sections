@@ -1,1 +1,48 @@
 
+import java.util.*;
+
+class Solution {
+    public boolean checkValidCuts(int n, int[][] rectangles) {
+        // Try both horizontal and vertical cuts
+        return checkCuts(rectangles, 0, n) || checkCuts(rectangles, 1, n);
+    }
+
+    private boolean checkCuts(int[][] rectangles, int dim, int n) {
+        int gapCount = 0;
+
+        // Sort rectangles based on the chosen dimension
+        Arrays.sort(rectangles, (a, b) -> Integer.compare(a[dim], b[dim]));
+
+        // Start checking from the leftmost (or bottommost) point
+        int furthestEnd = 0;
+
+        for (int[] rect : rectangles) {
+            if (furthestEnd < rect[dim]) {
+                gapCount++;
+            }
+            furthestEnd = Math.max(furthestEnd, rect[dim + 2]);
+        }
+
+        // Final check: Is there a gap at the end of the grid?
+        if (furthestEnd < n) {
+            gapCount++;
+        }
+
+        return gapCount >= 2;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        
+        int n = 10; // Example grid size
+        int[][] rectangles = {
+            {0, 1, 4, 3},
+            {4, 1, 7, 3},
+            {7, 1, 10, 3}
+        };
+
+        boolean result = solution.checkValidCuts(n, rectangles);
+        
+        System.out.println("Can we make valid cuts? " + result);
+    }
+}
