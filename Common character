@@ -1,0 +1,44 @@
+import java.util.*;
+
+class Solution {
+    public List<String> commonChars(String[] words) {
+        List<String> res = new ArrayList<>();
+        int[] minFreq = new int[26]; // Store the minimum frequency of each character
+        
+        Arrays.fill(minFreq, Integer.MAX_VALUE); // Initialize with max value
+
+        for (String word : words) {
+            int[] charCount = new int[26]; // Frequency count for each word
+            
+            // Count character frequency in current word
+            for (char c : word.toCharArray()) {
+                charCount[c - 'a']++;
+            }
+            
+            // Update min frequency across words
+            for (int i = 0; i < 26; i++) {
+                minFreq[i] = Math.min(minFreq[i], charCount[i]);
+            }
+        }
+
+        // Construct result based on min frequency
+        for (int i = 0; i < 26; i++) {
+            while (minFreq[i] > 0) {
+                res.add(String.valueOf((char) (i + 'a')));
+                minFreq[i]--;
+            }
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String[] words1 = {"bella", "label", "roller"};
+        System.out.println(solution.commonChars(words1)); // Output: ["e", "l", "l"]
+
+        String[] words2 = {"cool", "lock", "cook"};
+        System.out.println(solution.commonChars(words2)); // Output: ["c", "o"]
+    }
+}
