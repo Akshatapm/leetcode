@@ -1,0 +1,25 @@
+import java.util.HashSet;
+
+class Solution {
+    public int distributeCandies(int[] candyType) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : candyType) {
+            set.add(num);
+        }
+        
+        return Math.min(set.size(), candyType.length / 2);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[] candyType1 = {1, 1, 2, 2, 3, 3};
+        System.out.println("Max candy types: " + solution.distributeCandies(candyType1)); // Output: 3
+
+        int[] candyType2 = {1, 1, 2, 3};
+        System.out.println("Max candy types: " + solution.distributeCandies(candyType2)); // Output: 2
+
+        int[] candyType3 = {6, 6, 6, 6};
+        System.out.println("Max candy types: " + solution.distributeCandies(candyType3)); // Output: 1
+    }
+}
