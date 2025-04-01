@@ -1,0 +1,36 @@
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int count = 0;
+        for (int i = 0; i < flowerbed.length; i++) {
+            if (flowerbed[i] == 0) {
+                boolean leftEmpty = (i == 0 || flowerbed[i - 1] == 0);
+                boolean rightEmpty = (i == flowerbed.length - 1 || flowerbed[i + 1] == 0);
+                
+                if (leftEmpty && rightEmpty) {
+                    flowerbed[i] = 1; // Plant the flower
+                    count++;
+                    if (count >= n) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return count >= n;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        
+        int[] flowerbed1 = {1, 0, 0, 0, 1};
+        int n1 = 1;
+        System.out.println(solution.canPlaceFlowers(flowerbed1, n1)); // Output: true
+        
+        int[] flowerbed2 = {1, 0, 0, 0, 1};
+        int n2 = 2;
+        System.out.println(solution.canPlaceFlowers(flowerbed2, n2)); // Output: false
+
+        int[] flowerbed3 = {0, 0, 1, 0, 0};
+        int n3 = 2;
+        System.out.println(solution.canPlaceFlowers(flowerbed3, n3)); // Output: true
+    }
+}
