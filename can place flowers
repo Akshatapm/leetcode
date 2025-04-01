@@ -34,3 +34,4 @@ class Solution {
         System.out.println(solution.canPlaceFlowers(flowerbed3, n3)); // Output: true
     }
 }
+//this qn is based on greedy method and array topic 
