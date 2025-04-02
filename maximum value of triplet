@@ -1,0 +1,36 @@
+class Solution {
+    public long maximumTripletValue(int[] nums) {
+        int n = nums.length;
+        if (n < 3) return 0; // At least 3 elements are required
+
+        long maxValue = 0;
+        int maxI = nums[0]; // Maximum nums[i]
+        int minJ = nums[1]; // Minimum nums[j] after i
+
+        for (int j = 1; j < n - 1; j++) {
+            minJ = Math.min(minJ, nums[j]);
+            int diff = maxI - minJ; // Equivalent to nums[i] - nums[j]
+            if (diff > 0) {
+                for (int k = j + 1; k < n; k++) {
+                    maxValue = Math.max(maxValue, (long) diff * nums[k]);
+                }
+            }
+            maxI = Math.max(maxI, nums[j]); // Update maxI for next iteration
+        }
+
+        return maxValue;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[] nums1 = {3, 4, 5, 2};
+        System.out.println(solution.maximumTripletValue(nums1)); // Output: 6
+
+        int[] nums2 = {1, 2, 3};
+        System.out.println(solution.maximumTripletValue(nums2)); // Output: 0
+
+        int[] nums3 = {10, 20, 5, 8, 15};
+        System.out.println(solution.maximumTripletValue(nums3)); // Output: 75
+    }
+}
