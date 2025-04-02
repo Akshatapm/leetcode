@@ -34,3 +34,4 @@ class Solution {
         System.out.println(solution.maximumTripletValue(nums3)); // Output: 75
     }
 }
+// arithmetic triplet also similar question where we can use the hashset 
