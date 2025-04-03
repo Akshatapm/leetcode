@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Solution {
+    public long maximumTripletValue(int[] nums) {
+        int n = nums.length;
+        if (n < 3) return 0;
+
+        int maxLeft = nums[0]; // Max value from left
+        int maxDiff = Integer.MIN_VALUE; // Max (nums[i] - nums[j])
+        long maxProduct = 0; // Final result
+
+        for (int j = 1; j < n - 1; j++) {
+            maxDiff = Math.max(maxDiff, maxLeft - nums[j]); // Track best (nums[i] - nums[j])
+            maxProduct = Math.max(maxProduct, (long) maxDiff * nums[j + 1]); // Compute best triplet value
+            maxLeft = Math.max(maxLeft, nums[j]); // Update maxLeft for next iteration
+        }
+        return maxProduct;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums = {4, 3, 2, 5, 6, 1};
+        System.out.println("Maximum Triplet Value: " + sol.maximumTripletValue(nums));
+    }
+}
