@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Solution {
+    public static int minimumOperations(int[] nums) {
+        Map<Integer, Integer> freqMap = new HashMap<>();
+
+        // Count frequencies
+        for (int num : nums) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+
+        int totalOps = 0;
+
+        for (int freq : freqMap.values()) {
+            if (freq == 1) {
+                return -1; // Can't remove single element
+            }
+
+            int ops = freq / 3;
+            int remainder = freq % 3;
+
+            if (remainder == 0) {
+                totalOps += ops;
+            } else {
+                totalOps += ops + 1;
+            }
+        }
+
+        return totalOps;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {2, 3, 3, 2, 2, 4, 2, 3, 4};
+
+        int result = minimumOperations(nums);
+        System.out.println("Minimum operations to make array empty: " + result);
+    }
+}
