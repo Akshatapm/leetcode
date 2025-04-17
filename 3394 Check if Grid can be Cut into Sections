@@ -46,3 +46,4 @@ class Solution {
         System.out.println("Can we make valid cuts? " + result);
     }
 }
+//for checking the jenkins server
