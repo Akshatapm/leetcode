@@ -36,4 +36,5 @@ public class Solution {
         long result = sol.countGood(nums, k);
         System.out.println("Number of good subarrays: " + result);
     }
+
 }
