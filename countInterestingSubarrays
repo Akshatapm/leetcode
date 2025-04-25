@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class Solution {
+    public long countInterestingSubarrays(List<Integer> nums, int modulo, int k) {
+        long count = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            int match = 0;
+            for (int j = i; j < nums.size(); j++) {
+                if (nums.get(j) % modulo == k) {
+                    match++;
+                }
+                if (match % modulo == k) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        // Test example
+        List<Integer> nums = Arrays.asList(3, 1, 9, 6); // Change this input to test more
+        int modulo = 5;
+        int k = 1;
+
+        long result = sol.countInterestingSubarrays(nums, modulo, k);
+        System.out.println("Interesting Subarrays Count: " + result);
+    }
+}
