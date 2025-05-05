@@ -1,0 +1,31 @@
+// general solution 
+
+public class Main {
+    public static void main(String[] args) {
+        int n = 16;
+        boolean isPerfectSquare = false;
+
+        for (int i = 0; i <= Math.sqrt(n); i++) {
+            if (i * i == n) {
+                isPerfectSquare = true;
+                break;
+            }
+        }
+
+        System.out.println(isPerfectSquare);
+    }
+}
+
+
+//one more method by bit shifting 
+public class PowerOfTwo {
+    public boolean isPowerOfTwo(int n) {
+        if (n <= 0) return false;
+
+        long i = 1;
+        while (i < n) {
+            i <<= 1;
+        }
+        return i == n;
+    }
+} 
