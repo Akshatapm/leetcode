@@ -1,0 +1,16 @@
+public class MergeStrings {
+    public static void main(String[] args) {
+        String str1 = "abc";
+        String str2 = "1234";
+        StringBuilder merged = new StringBuilder();
+
+        int maxLength = Math.max(str1.length(), str2.length());
+
+        for (int i = 0; i < maxLength; i++) {
+            if (i < str1.length()) merged.append(str1.charAt(i));
+            if (i < str2.length()) merged.append(str2.charAt(i));
+        }
+
+        System.out.println(merged.toString());  // Output: a1b2c3
+    }
+}
