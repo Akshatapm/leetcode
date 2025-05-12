@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] findEvenNumbers(int[] digits) {
+        int freq[] = new int[10];
+        
+        // Count the frequency of each digit
+        for (int num : digits) {
+            freq[num]++;
+        }
+        
+        List<Integer> result = new ArrayList<>();
+        
+        // Iterate through all three-digit even numbers
+        for (int i = 100; i < 1000; i += 2) {
+            int a = i % 10;          // Units place
+            int b = (i / 10) % 10;   // Tens place
+            int c = i / 100;         // Hundreds place
+            
+            // Decrement the frequency of the digits
+            freq[a]--;
+            freq[b]--;
+            freq[c]--;
+            
+            // Check if the digits are valid
+            if (freq[a] >= 0 && freq[b] >= 0 && freq[c] >= 0) {
+                result.add(i);
+            }
+            
+            // Restore the frequency
+            freq[a]++;
+            freq[b]++;
+            freq[c]++;
+        }
+        
+        // Convert the result list to an array
+        int[] resArray = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            resArray[i] = result.get(i);
+        }
+        
+        return resArray;
+    }
+}
