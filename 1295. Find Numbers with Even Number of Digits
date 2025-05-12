@@ -17,3 +17,17 @@ class Solution {
     }
 }
 //every time the temp is updated to new array element value
+// enhanced for loop used 
+for (int num : nums) {
+            // Count the number of digits using logarithm
+            int digit = (int) Math.log10(num) + 1;
+            // Check if the digit count is even
+            if (digit % 2 == 0) {
+                count++;
+            }
+        }
+// also we can use string length 
+
+if (String.valueOf(nums[i]).length() % 2 == 0) {
+    count++;
+}
