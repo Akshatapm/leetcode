@@ -1,1 +1,18 @@
+public class Solution {
+    int missingNumber(int[] nums) {
+        long sum = 0;
+        int n = nums.length + 1;
+        long res = (long) n * (n + 1) / 2;
+        for (int num : nums) {
+            sum += num;
+        }
+        return (int) (res - sum);
+    }
 
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums = {1, 2, 4, 5, 6};  // Example input with missing number 3
+        int missing = sol.missingNumber(nums);
+        System.out.println("Missing number: " + missing);
+    }
+}
