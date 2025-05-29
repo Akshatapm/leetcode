@@ -1,1 +1,13 @@
-
+class solution{
+public ListNode reversenode(ListNode head){
+ListNode prev=mull;
+ListNode curr=head;
+while(curr!=null){
+ListNode temp=curr.next;
+curr.next=prev;
+prev=curr;
+curr=temp;
+}
+return prev;
+}
+}
