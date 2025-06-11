@@ -1,5 +1,4 @@
 class Solution {
-
     public int maxDifference(String s) {
         Map<Character, Integer> c = new HashMap<>();
         for (char ch : s.toCharArray()) {
