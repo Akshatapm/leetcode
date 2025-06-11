@@ -10,7 +10,7 @@ class Solution {
                 digit += 1;
             }
             if (digit % 2 == 0) {
-                count++;
+                count++; 
             }
         }
         return count;
