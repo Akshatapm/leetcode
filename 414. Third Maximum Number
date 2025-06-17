@@ -1,0 +1,25 @@
+class Solution {
+    public int thirdMax(int[] nums) {
+      Long firstMax = Long.MIN_VALUE, secondMax = Long.MIN_VALUE, thirdMax = Long.MIN_VALUE;
+
+        for (int num : nums) {
+            // Skip duplicates
+            if (num == firstMax || num == secondMax || num == thirdMax) continue;
+
+            // Update the top three maximums
+            if (num > firstMax) {
+                thirdMax = secondMax;
+                secondMax = firstMax;
+                firstMax = (long) num;
+            } else if (num > secondMax) {
+                thirdMax = secondMax;
+                secondMax = (long) num;
+            } else if (num > thirdMax) {
+                thirdMax = (long) num;
+            }
+        }
+
+        // Return thirdMax if it's been updated; otherwise, return firstMax
+        return thirdMax == Long.MIN_VALUE ? firstMax.intValue() : thirdMax.intValue();
+    }
+}
