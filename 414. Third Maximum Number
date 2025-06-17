@@ -23,3 +23,4 @@ class Solution {
         return thirdMax == Long.MIN_VALUE ? firstMax.intValue() : thirdMax.intValue();
     }
 }
+
