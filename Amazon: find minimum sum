@@ -1,0 +1,52 @@
+AWS provides scalable systems. A set of n servers are used for horizontally scaling an application. The goal is to have the computational power of the servers in non-decreasing order. To do so, you can increase the computational power of each server in any contiguous segment by x. Choose the values of x such that after the computational powers are in non-decreasing order, the sum of the x values is minimum.
+
+Example
+
+There are n = 5 servers and their computational power = [3, 4, 1, 6, 2].
+Add 3 units to the subarray (2, 4) and 4 units to the subarray (4, 4). The final arrangement of the servers is: [3,4,4,9,9].
+
+The answer is 3 + 4 = 7.
+Function Description
+
+Complete the function find MinimumSum in the editor below.
+
+findMinimumSum has the following parameter(s):
+
+int power[n]: the computational powers of n different servers
+
+Returns
+
+int: the minimum possible sum of integers required to make the array non-decreasing
+
+import java.util.*;
+
+public class Main {
+
+    public static long minimumSum(List<Integer> power) {
+        long totalSum = 0L;
+
+        for (int i = 1; i < power.size(); i++) {
+            int curr = power.get(i);
+            int prev = power.get(i - 1);
+
+            if (curr > prev) {
+                totalSum += (curr - prev);  // Add difference instead of overwriting
+            }
+        }
+
+        return totalSum;
+    }
+
+    public static void main(String[] args) {
+        int nums[] = {3, 4, 4, 9, 9};
+
+        // Convert array to List<Integer>
+        List<Integer> powerList = new ArrayList<>();
+        for (int num : nums) {
+            powerList.add(num);
+        }
+
+        long minSum = minimumSum(powerList);
+        System.out.println(minSum);
+    }
+}
