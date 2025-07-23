@@ -1,1 +1,38 @@
 
+1717. Maximum Score From Removing Substring
+class Solution {
+    public int maximumGain(String s, int x, int y) {
+        // Determine the higher priority pair
+        String first = x >= y ? "ab" : "ba";
+        String second = x >= y ? "ba" : "ab";
+        int firstGain = Math.max(x, y);
+        int secondGain = Math.min(x, y);
+
+        // First pass: remove higher priority pair
+        int totalGain = 0;
+        StringBuilder stack1 = new StringBuilder();
+
+        for (char c : s.toCharArray()) {
+            stack1.append(c);
+            int len = stack1.length();
+            if (len >= 2 && stack1.substring(len - 2, len).equals(first)) {
+                stack1.setLength(len - 2); // Remove the pair
+                totalGain += firstGain;
+            }
+        }
+
+        // Second pass: remove the lower priority pair
+        StringBuilder stack2 = new StringBuilder();
+        for (int i = 0; i < stack1.length(); i++) {
+            char c = stack1.charAt(i);
+            stack2.append(c);
+            int len = stack2.length();
+            if (len >= 2 && stack2.substring(len - 2, len).equals(second)) {
+                stack2.setLength(len - 2); // Remove the pair
+                totalGain += secondGain;
+            }
+        }
+
+        return totalGain;
+    }
+}
