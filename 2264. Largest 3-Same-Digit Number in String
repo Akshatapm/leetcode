@@ -1,1 +1,18 @@
 
+class Solution {
+    public String largestGoodInteger(String num) {
+        int i=0;
+        String maxnum="";
+        for(i=0;i<num.length()-2;i++){
+             String temp;
+            if(num.charAt(i)==num.charAt(i+1)&&num.charAt(i+1)==num.charAt(i+2)){
+              temp=num.substring(i,i+3);
+            
+            if(temp.compareTo(maxnum)>0){
+                maxnum=temp;
+            }
+        }
+        }
+        return maxnum;
+    }
+}
