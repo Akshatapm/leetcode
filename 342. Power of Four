@@ -1,1 +1,11 @@
-
+class Solution {
+    public boolean isPowerOfFour(int n) { 
+       if(n<1)return false;
+       while(n%4==0){
+        n/=4;
+       }
+       return n==1;
+    }
+}
+//second method with max time complexity 
+public boolean isPowerOfFour(int n) { boolean ispower=false; if(n==0)return ispower; if(n==1)return true; for(int i=1;i<=Math.sqrt(n)/2;i++){ if(Math.pow(4,i)==n){ ispower=true; break; } } return ispower; }
