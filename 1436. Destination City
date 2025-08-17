@@ -1,0 +1,34 @@
+1436. Destination City
+
+
+import java.util.*;
+
+public class DestinationCity {
+    public static String destCity(List<List<String>> paths) {
+        Set<String> startingCities = new HashSet<>();
+
+        // Step 1: collect all starting cities
+        for (List<String> path : paths) {
+            startingCities.add(path.get(0));
+        }
+
+        // Step 2: find the destination not in starting cities
+        for (List<String> path : paths) {
+            String destination = path.get(1);
+            if (!startingCities.contains(destination)) {
+                return destination;
+            }
+        }
+
+        return ""; // fallback, should never reach here
+    }
+
+    public static void main(String[] args) {
+        List<List<String>> paths = new ArrayList<>();
+        paths.add(Arrays.asList("London", "New York"));
+        paths.add(Arrays.asList("New York", "Lima"));
+        paths.add(Arrays.asList("Lima", "Sao Paulo"));
+
+        System.out.println(destCity(paths)); // Output: Sao Paulo
+    }
+}
