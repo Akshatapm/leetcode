@@ -1,1 +1,21 @@
 
+class solution{
+public int maxarea(int[][] dimensions){
+int maxarea=0;
+int maxdiasq=0;
+for(int[] react:dimensions){
+int a=react[0];
+int b=react[1];
+int area=a*b;
+int diasq=a*a+b*b;
+if(maxdiasq<diasq){
+maxdiasq=diasq;
+maxarea=area;
+}
+else if(diasq==maxdiqsq){
+maxarea=Math.max(maxarea,area);
+}
+}
+return maxarea;
+}
+}
