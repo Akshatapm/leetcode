@@ -60,3 +60,29 @@ class Solution {
         return "aeiouAEIOU".indexOf(c) != -1;
     }
 }
+// we can use one more method like array of char which consisting fo ascii characters of 256 letters 
+
+class Solution {
+    public int maxFreqSum(String s) {
+        if (s.length() == 0) return 0;
+
+        int maxVowel = 0, maxConsonant = 0;
+        int[] freq = new int[256]; // ASCII size (works for English letters)
+
+        for (char c : s.toCharArray()) {
+            freq[c]++;
+
+            if (isVowel(c)) {
+                maxVowel = Math.max(maxVowel, freq[c]);
+            } else {
+                maxConsonant = Math.max(maxConsonant, freq[c]);
+            }
+        }
+
+        return maxVowel + maxConsonant;
+    }
+
+    private boolean isVowel(char c) {
+        return "aeiouAEIOU".indexOf(c) != -1;
+    }
+}
