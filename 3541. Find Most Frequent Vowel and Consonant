@@ -27,3 +27,36 @@ class Solution {
         return "aeiouAEIOU".indexOf(c) != -1;
     }
 }
+
+
+// we can remove the two extra loops by keeping track of maxvowel and maxconsonant 
+while building the maps. That way you update the maximum frequency as you go, avoiding the final scans.
+
+
+class Solution {
+    public int maxFreqSum(String s) {
+        if (s.length() == 0) return 0;
+
+        int maxvowel = 0, maxconsonant = 0;
+        HashMap<Character, Integer> vowel = new HashMap<>();
+        HashMap<Character, Integer> consonant = new HashMap<>();
+
+        for (char c : s.toCharArray()) {
+            if (isvowel(c)) {
+                int count = vowel.getOrDefault(c, 0) + 1;
+                vowel.put(c, count);
+                maxvowel = Math.max(maxvowel, count);  // update on the fly
+            } else {
+                int count = consonant.getOrDefault(c, 0) + 1;
+                consonant.put(c, count);
+                maxconsonant = Math.max(maxconsonant, count);  // update on the fly
+            }
+        }
+
+        return maxconsonant + maxvowel;
+    }
+
+    public static boolean isvowel(char c) {
+        return "aeiouAEIOU".indexOf(c) != -1;
+    }
+}
