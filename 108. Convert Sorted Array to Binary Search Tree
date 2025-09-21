@@ -26,7 +26,7 @@ class Solution {
            return null;
         }
         int mid=(low+high)/2;
-        var root=new TreeNode(nums[mid]);
+        val root=new TreeNode(nums[mid]);
         root.left=makebinary(nums,low,mid-1);
         root.right=makebinary(nums,mid+1,high);
         return root;
