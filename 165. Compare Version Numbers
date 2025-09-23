@@ -1,0 +1,38 @@
+//we can solve this by using StringTokenizer to avoid extra memory storage for array 
+import java.util.StringTokenizer;
+
+class Solution {
+    public int compareVersion(String version1, String version2) {
+        StringTokenizer st1 = new StringTokenizer(version1, ".");
+        StringTokenizer st2 = new StringTokenizer(version2, ".");
+        
+        while (st1.hasMoreTokens() || st2.hasMoreTokens()) {
+            int v1 = st1.hasMoreTokens() ? Integer.parseInt(st1.nextToken()) : 0;
+            int v2 = st2.hasMoreTokens() ? Integer.parseInt(st2.nextToken()) : 0;
+            
+            if (v1 > v2) return 1;
+            if (v1 < v2) return -1;
+        }
+        
+        return 0;
+    }
+}
+// one more way is to convert the string into array which will consume more space 
+class Solution {
+    public int compareVersion(String version1, String version2) {
+        String[] wrd1 = version1.split("\\.");
+        String[] wrd2 = version2.split("\\.");
+        
+        int n = Math.max(wrd1.length, wrd2.length);
+        
+        for (int i = 0; i < n; i++) {
+            int v1 = i < wrd1.length ? Integer.parseInt(wrd1[i]) : 0;
+            int v2 = i < wrd2.length ? Integer.parseInt(wrd2[i]) : 0;
+            
+            if (v1 > v2) return 1;
+            if (v1 < v2) return -1;
+        }
+        
+        return 0;
+    }
+}
