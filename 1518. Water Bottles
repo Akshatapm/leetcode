@@ -1,1 +1,13 @@
 
+class solution{
+public static int waterbottles(int numBottles, int numExchanges){
+int totalBottles=numBottles,bottlewrapper=numBottles;
+while(bottlewrapper>=numExchanges){
+int remain=bottlewrapper%numExchanges;
+int toadd=bottlewrapper/numExchanges;
+totalBottles+=toadd;
+bottlewrapper=remain+toadd;
+}
+return totalBottles;
+}
+}
