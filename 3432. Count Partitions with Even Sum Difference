@@ -1,1 +1,26 @@
 
+class Solution {
+    public int countPartitions(int[] nums) {
+        int n = nums.length;
+        int count = 0;
+
+        int total = 0;
+        for (int num : nums) {
+            total += num;
+        }
+
+        int leftsum = 0;
+
+        // split positions: 0 to n-2
+        for (int i = 0; i < n -1; i++) {
+            leftsum += nums[i];
+            int rightsum = total - leftsum;
+           
+            if (leftsum % 2 == rightsum % 2 ) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
